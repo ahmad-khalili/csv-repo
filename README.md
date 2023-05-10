@@ -24,7 +24,8 @@ const string GatewayUrl = "https://pcmxlikega.execute-api.us-east-1.amazonaws.co
     }
 ```
 If you want to run the app locally, you need .NET 7 SDK, and just navigate to the csv-repo/csv-repo (which contains the `.csproj`), and run dotnet run from the terminal.
-You can then navigate to the `https://localhost:7270/swagger` or `http://localhost:5035` routes, or even `http://localhost:60649/swagger`, if you prefer IIS
+You can then navigate to the `https://localhost:7270/swagger` or `http://localhost:5035` routes, or even `http://localhost:60649/swagger`, if you prefer IIS.
+You also need the `AccessKeyId`, and `AccessSecretKey` environment variables to be setup in your machine.
 ## Deployment Architecture
 ![csv_repo_diagram](https://github.com/ahmad-khalili/csv-repo/assets/63163965/213af10a-93f7-451f-9b4a-3eaace52e457)
 ## Lambda Functions
