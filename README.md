@@ -345,4 +345,5 @@ Used Policies:
 This was used to make the Lambda functions accessible to other consumers, such as frontend apps, or my `backend` app in my case. It also handled doing the authorization using the cognito user pool token sent in from my deployed app.
 ### AWS Cognito/User Pool
 This was used to map my regiseterd users to certain user pools, that handles all the authentication, and the authorization part of the application.
-
+## Video Proof
+https://github.com/ahmad-khalili/csv-repo/assets/63163965/a2a66807-1a2d-47aa-9f7c-3031e0226c20
