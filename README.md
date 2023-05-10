@@ -1,4 +1,30 @@
 # CSV Repository
+## Quick Explanation
+My app just uses an http client that hits the API Gateway created resources based on the request
+```csharp
+const string GatewayUrl = "https://pcmxlikega.execute-api.us-east-1.amazonaws.com/release/files";
+[HttpGet("{fileName}")]
+    public async Task<IActionResult> RetrieveFile(string fileName)
+    {
+        try
+        {
+            _httpClient.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(
+                HttpContext.User.Claims.FirstOrDefault(c => c.Type == "CognitoToken")?.Value);
+
+            var response = await _httpClient.GetAsync($"{GatewayUrl}/{fileName}");
+            
+            var responseJson = await response.Content.ReadFromJsonAsync<FileResponse>();
+
+            return StatusCode((int)response.StatusCode, responseJson);
+        }
+        catch (Exception)
+        {
+            return Problem();
+        }
+    }
+```
+If you want to run the app locally, you need .NET 7 SDK, and just navigate to the csv-repo/csv-repo (which contains the `.csproj`), and run dotnet run from the terminal.
+You can then navigate to the `https://localhost:7270/swagger` or `http://localhost:5035` routes, or even `http://localhost:60649/swagger`, if you prefer IIS
 ## Deployment Architecture
 ![csv_repo_diagram](https://github.com/ahmad-khalili/csv-repo/assets/63163965/213af10a-93f7-451f-9b4a-3eaace52e457)
 ## Lambda Functions
